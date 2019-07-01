@@ -10,7 +10,7 @@ console.log(typeof income);
 console.log(typeof deposit);
 console.log(income.length);
 
-console.log('Период ' + period + ' месяца');
+console.log('Период ' + period + ' месяцев');
 console.log('Цель заработать ' + mission + ' гривен');
 
 addExpenses = addExpenses.toLowerCase().split(", ");
