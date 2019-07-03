@@ -16,7 +16,7 @@ let questionSpend1 = prompt("Какие обязательные ежемеся�
     questionSpend2 = prompt("Какие обязательные ежемесячные расходы у вас есть?"),
     expenses2 = +prompt("Во сколько это обойдется?");
 
-let budgetMonth = money - expenses1 - expenses1;
+let budgetMonth = money - expenses1 - expenses2;
 console.log(budgetMonth);
 
 let goalAchieved = mission / budgetMonth; 
