@@ -9,6 +9,7 @@ let money = +prompt('Ваш месячный доход?'),
 
 console.log(typeof money);
 console.log(typeof income);
+console.log(addExpenses.split(', '));
 console.log(typeof deposit);
 
 let questionSpend1 = prompt("Какие обязательные ежемесячные расходы у вас есть?"),
