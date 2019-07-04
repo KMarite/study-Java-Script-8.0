@@ -27,3 +27,11 @@ let arr = {
 confirm(arr[lang]);
 
 
+let namePerson = prompt('Введите Ваше имя начиная с заглавной буквы'),
+    director = 'директор',
+    teacher = 'преподаватель',
+    other = 'студент';
+
+let result = namePerson === 'Артем' ? director : namePerson === 'Максим' ? teacher : other;
+
+console.log(result);
