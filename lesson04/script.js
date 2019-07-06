@@ -32,9 +32,8 @@ let getAccumulatedMonth = function () {
 let accumulatedMonth = getAccumulatedMonth();
 
 
-let goalAchieved = mission / accumulatedMonth;
 let getTargetMonth = function() {
-  return goalAchieved;
+  return mission / accumulatedMonth;
 };
 
 
