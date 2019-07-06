@@ -25,22 +25,20 @@ let getExpensesMonth = function() {
   return expenses1 + expenses2;
 };
 
-let budgetMonth = money - expenses1 - expenses2;
-let getAccumulatedMonth = function() {
-  return budgetMonth;
+
+let getAccumulatedMonth = function () {
+  return money - getExpensesMonth();
 };
 let accumulatedMonth = getAccumulatedMonth();
-console.log('accumulatedMonth:', accumulatedMonth);
 
 
-let goalAchieved = mission / budgetMonth;
+let goalAchieved = mission / accumulatedMonth;
 let getTargetMonth = function() {
   return goalAchieved;
 };
-console.log('getTargetMonth():', Math.floor(getTargetMonth()));
 
 
-let budgetDay = budgetMonth / 30;
+let budgetDay = accumulatedMonth / 30;
 
 function getStatusIncome(){
   if (budgetDay >= 800) {
@@ -53,5 +51,7 @@ function getStatusIncome(){
     return('Что то пошло не так');
   }
 }
+console.log('accumulatedMonth:', accumulatedMonth);
+console.log('getTargetMonth():', Math.floor(getTargetMonth()));
 console.log('getStatusIncome(): ', getStatusIncome());
 
