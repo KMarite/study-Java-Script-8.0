@@ -50,7 +50,7 @@ let appData = {
   },
   
   getTargetMonth: function () {
-    let target = appData.mission / appData.getBudget;
+    let target = appData.mission / money;
     if (target > 0) {
       console.log('Цель будет достигнута');
     } else {
@@ -80,7 +80,7 @@ appData.getTargetMonth();
 appData.getStatusIncome();
 
 for (let key in appData) {
-  console.log('Наша программа включает в себя данные:' + key + appData[key]);
+  console.log('Наша программа включает в себя данные:' + key + appData);
 }
 
 
