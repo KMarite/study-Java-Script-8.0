@@ -19,18 +19,21 @@ title3[2].textContent = 'Книга 3. this и Прототипы Объекто
 
 firstBody.setAttribute('style', 'background-image: url(./image/you-dont-know-js.jpg)');
 
-let secondBook = document.querySelectorAll('.books'),
-secondCollect = document.getElementsByTagName('li');
+let ulList = document.querySelectorAll('.book ul'),
+liList = document.querySelectorAll('.book ul li');
 
-// secondBook[0].insertBefore(secondCollect[12], secondCollect[9]);
+ulList[1].insertBefore(liList[8], liList[16]);
+ulList[1].insertBefore(liList[12], liList[10]);
+ulList[1].insertBefore(liList[14], liList[10]);
+ulList[4].insertBefore(liList[45], liList[39]);
+ulList[4].insertBefore(liList[38], liList[42]);
+ulList[4].insertBefore(liList[41], liList[44]);
 
-let book6 = document.querySelectorAll('.book'),
-    collect6 = document.getElementsByTagName('li');
+
+let newCollect = document.createElement('li');
+
+ulList[5].appendChild(newCollect);
+newCollect.textContent = 'Глава 8: За пределами ES6';
+ulList[5].insertBefore(newCollect, liList[56]);
 
 
-
-
-console.log(secondBook);
-console.log(secondCollect);
-console.log(book6);
-console.log(collect6);
