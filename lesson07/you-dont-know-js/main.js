@@ -29,11 +29,8 @@ ulList[4].insertBefore(liList[45], liList[39]);
 ulList[4].insertBefore(liList[38], liList[42]);
 ulList[4].insertBefore(liList[41], liList[44]);
 
-
 let newCollect = document.createElement('li');
 
 ulList[5].appendChild(newCollect);
 newCollect.textContent = 'Глава 8: За пределами ES6';
 ulList[5].insertBefore(newCollect, liList[56]);
-
-
