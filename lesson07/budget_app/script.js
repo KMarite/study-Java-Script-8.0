@@ -149,23 +149,4 @@ let btnStart = document.getElementById('start'),
     addExpItem = document.querySelector('.additional_expenses-item'),
     targetAmount = document.querySelector('.target-amount'),
     periodRange = document.querySelector('.period-select'),
-    budMonth = document.querySelector('.result-total budget_month-value');
-
-
-
-
-    console.log(expMonthValue);
-    console.log(addIncomeValue);
-    console.log(addExpValue);
-    console.log(incPeriodValue);
-    console.log(targetMonthValue);
-    console.log(salaryMoney);
-    console.log(incomeTitle);
-    console.log(incomeAmount);
-    console.log(expTitle);
-    console.log(expAmount);
-    console.log(addExpItem);
-    console.log(targetAmount);
-
-   console.log(periodRange);
-    console.log(budMonth);
+    budMonth = document.querySelector('.result-budget_month');
