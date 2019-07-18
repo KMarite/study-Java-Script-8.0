@@ -1,5 +1,26 @@
 'use strict';
 
+let btnStart = document.getElementById('start'),
+    btnPlasIncAdd = document.getElementsByTagName('button')[0],
+    btnPlasExpAdd = document.getElementsByTagName('button')[1],
+    checkBox = document.querySelector('#deposit-check'),
+    addIncItem =  document.querySelectorAll('.additional_income-item'),
+    budgetDayValue = document.querySelector('.result-budget_day'),
+    expMonthValue = document.querySelector('.result-expenses_month'),
+    addIncomeValue = document.querySelector('.result-additional_income'),
+    addExpValue = document.querySelector('.result-additional_expenses'),
+    incPeriodValue = document.querySelector('.result-income_period'),
+    targetMonthValue = document.querySelector('.result-target_month'),
+    salaryMoney = document.querySelector('.salary'),
+    incomeTitle = document.querySelector('.income-items input'),
+    incomeAmount = document.querySelector('.income-amount'),
+    expTitle = document.querySelector('.expenses-items input'),
+    expAmount = document.querySelector('.expenses-amount'),
+    addExpItem = document.querySelector('.additional_expenses-item'),
+    targetAmount = document.querySelector('.target-amount'),
+    periodRange = document.querySelector('.period-select'),
+    budMonth = document.querySelector('.result-budget_month');
+
 let money,
   start = function () {
     do {
@@ -130,23 +151,6 @@ for (let i = 0; i < appData.addExpenses.length; i++) {
 
 console.log(addExp.join(', '));
 
-let btnStart = document.getElementById('start'),
-    btnPlasIncAdd = document.getElementsByTagName('button'),
-    btnPlasExpAdd = document.getElementsByTagName('button'),
-    checkBox = document.querySelector('#deposit-check'),
-    addIncItem =  document.querySelectorAll('.additional_income-item'),
-    budgetDayValue = document.querySelector('.result-budget_day'),
-    expMonthValue = document.querySelector('.result-expenses_month'),
-    addIncomeValue = document.querySelector('.result-additional_income'),
-    addExpValue = document.querySelector('.result-additional_expenses'),
-    incPeriodValue = document.querySelector('.result-income_period'),
-    targetMonthValue = document.querySelector('.result-target_month'),
-    salaryMoney = document.querySelector('.salary'),
-    incomeTitle = document.querySelector('.income-items input'),
-    incomeAmount = document.querySelector('.income-amount'),
-    expTitle = document.querySelector('.expenses-items input'),
-    expAmount = document.querySelector('.expenses-amount'),
-    addExpItem = document.querySelector('.additional_expenses-item'),
-    targetAmount = document.querySelector('.target-amount'),
-    periodRange = document.querySelector('.period-select'),
-    budMonth = document.querySelector('.result-budget_month');
+
+
+ 
