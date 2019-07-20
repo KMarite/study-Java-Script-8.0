@@ -45,13 +45,13 @@ let appData = {
     appData.budget = salaryAmount.value;
     
     appData.getExpenses();
-    
-    appData.asking();
-    appData.getExpensesMonth();
-    appData.getBudget();
-    appData.getTargetMonth();
-    appData.getStatusIncome();
-    appData.getInfoDeposit();
+
+    // appData.asking();
+    // appData.getExpensesMonth();
+    // appData.getBudget();
+    // appData.getTargetMonth();
+    // appData.getStatusIncome();
+    // appData.getInfoDeposit();
   },
   addExpensesBlock: function(){
     let expensesItems = document.querySelectorAll('.expenses-items');
