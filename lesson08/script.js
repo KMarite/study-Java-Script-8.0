@@ -24,8 +24,6 @@ let start = document.getElementById('start'),
   incomeItems = document.querySelectorAll('.income-items'),
   inputTextData = document.querySelectorAll('.data input[type = text]');
 
-
-
 let appData = {
   budget: 0,
   budgetDay: 0,
@@ -39,16 +37,29 @@ let appData = {
   percentDeposit: 0,
   moneyDeposit: 0,
   addExpenses: [],
+  check: function(){
+    if (salaryAmount.value !== ''){
+      start.removeAttribute('disabled', 'disabled');
+    }
+  },
   start: function () {
-
     if (salaryAmount.value === ''){
-      alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
+      start.setAttribute('disabled', 'disabled');
       return;
     }
-   
+let allInput = document.querySelectorAll('.data input[type = text]');
+      allInput.forEach(function (item){
+        item.setAttribute('disabled', 'disabled');
+
+    });
+    btnPlasExpAdd.setAttribute('disabled', 'disabled');
+    btnPlasIncAdd.setAttribute('disabled', 'disabled');
+    start.style.display = 'none';
+    cansel.style.display = 'block';
+
+
     appData.budget = +salaryAmount.value;
 
-    
     appData.getExpenses();
     appData.getIncome();
     appData.getExpensesMonth();
@@ -183,10 +194,12 @@ let appData = {
 start.addEventListener('click', appData.start);
 btnPlasExpAdd.addEventListener('click', appData.addExpensesBlock);
 btnPlasIncAdd.addEventListener('click', appData.addIncomeBlock);
+salaryAmount.addEventListener('keyup', appData.check);
 
 periodSelect.addEventListener('change', function(){
     periodAmount.innerHTML = periodSelect.value;
   });
+
 
 
 let addExp = [];
@@ -197,4 +210,12 @@ for (let i = 0; i < appData.addExpenses.length; i++) {
 }
 console.log(addExp.join(', '));
 
+// inputTextData.forEach(function (item){
+//   start.addEventListener('click', function (){
+
+//     item.setAttribute('disabled', 'disabled');
+//     start.style.display = 'none';
+//     cansel.style.display = 'block';
+//   });
+// });
 
