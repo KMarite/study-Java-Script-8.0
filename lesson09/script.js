@@ -114,7 +114,7 @@ let appData = {
     targetMonthValue.value = Math.ceil(this.getTargetMonth());
     incPeriodValue.value = this.calcPeriod();
     periodSelect.addEventListener('change', function(){
-      incPeriodValue.value = appData.calcPeriod();
+      incPeriodValue.value = this.calcPeriod();
     });
   
   },
