@@ -23,6 +23,7 @@ let start = document.getElementById('start'),
   budgetMonthValue = document.querySelector('.result-budget_month input'),
   incomeItems = document.querySelectorAll('.income-items');
 
+
 let appData = {
   budget: 0,
   budgetDay: 0,
@@ -54,6 +55,7 @@ let appData = {
     btnPlasIncAdd.setAttribute('disabled', 'disabled');
     start.style.display = 'none';
     cansel.style.display = 'block';
+    
   
     appData.budget = +salaryAmount.value;
 
@@ -76,18 +78,32 @@ let appData = {
     inputTextData.forEach(function(elem){
      elem.value = '';
      elem.removeAttribute('disabled', 'disabled');
-     
+     periodSelect.value = '0';
+     periodAmount.innerHTML = periodSelect.value; 
+
     });
     resultInputAll.forEach(function(elem){
       elem.value = '';
      });
-     
+
+     for (let i = 1; i < incomeItems.length; i++){
+      incomeItems[i].parentNode.removeChild(incomeItems[i]);
+      btnPlasIncAdd.style.display = 'block';
+     }
+     for (let i = 1; i < expensesItems.length; i++){
+      expensesItems[i].parentNode.removeChild(expensesItems[i]);
+      btnPlasExpAdd.style.display = 'block';
+     }
+
     cansel.style.display = 'none';
     start.style.display = 'block';
     btnPlasExpAdd.removeAttribute('disabled', 'disabled');
     btnPlasIncAdd.removeAttribute('disabled', 'disabled');
-
-
+    checkBox.checked = false;
+   
+  
+  
+    
   },
 
   showResult: function(){
