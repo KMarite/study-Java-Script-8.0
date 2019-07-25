@@ -130,11 +130,11 @@ let appData = {
     }
   },
   getExpenses: function(){
-    expensesItems.forEach(function(item){
+    expensesItems.forEach((item) => {
         let itemExpenses = item.querySelector('.expenses-title').value;
         let cashExpenses = item.querySelector('.expenses-amount').value;
         if(itemExpenses !== '' && cashExpenses !== ''){
-          appData.expenses[itemExpenses] = cashExpenses;
+          this.expenses[itemExpenses] = cashExpenses;
         }
     });    
   },
@@ -149,32 +149,32 @@ let appData = {
     }
   },
   getIncome: function(){
-   incomeItems.forEach(function(item){
+   incomeItems.forEach((item) => {
      let itemIncome = item.querySelector('.income-title').value;
      let cashIncome = item.querySelector('.income-amount').value;
    
      if (itemIncome !== '' && cashIncome !== ''){
-      appData.income[itemIncome] = cashIncome;
+      this.income[itemIncome] = cashIncome;
     }  
    });
-    for (let key in appData.income){
-      appData.incomeMonth += +appData.income[key];
-    }  
+    for (let key in this.income){
+      this.incomeMonth += +this.income[key];
+    } 
   },
   getAddExpenses: function(){
     let addExpenses = addExpItem.value.split(',');
-    addExpenses.forEach(function(item){
+    addExpenses.forEach((item) => {
       item = item.trim();
       if (item !== ''){
-       appData.addExpenses.push(item);
+       this.addExpenses.push(item);
       } 
     });   
   },
   getAddIncome: function(){
-    addIncItem.forEach(function(item){
+    addIncItem.forEach((item) => {
        let itemValue = item.value.trim();
        if(itemValue !== ''){
-         appData.addIncome.push(itemValue);
+         this.addIncome.push(itemValue);
        }    
     });
   },
