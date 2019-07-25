@@ -101,9 +101,6 @@ let appData = {
     btnPlasIncAdd.removeAttribute('disabled', 'disabled');
     checkBox.checked = false;
    
-  
-  
-    
   },
 
   showResult: function(){
