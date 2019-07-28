@@ -21,7 +21,7 @@ DomElement.prototype.createElem = function(){
     newElem.style.width = this.width + 'px';
     newElem.style.background = this.bg;
     newElem.style.fontSize = this.fontSize + 'px';
-    console.log(newElem);
+    document.body.appendChild(newElem);
 };
 
 let block1 = new DomElement('.text', 100, 100, 'green', 14);
