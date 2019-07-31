@@ -26,7 +26,7 @@ let start = document.getElementById('start'),
   depositAmount = document.querySelector('.deposit-amount'),
   depositPercent = document.querySelector('.deposit-percent');
 
-let appData = {
+const appData = {
   budget: 0,
   budgetDay: 0,
   budgetMonth: 0,
@@ -121,7 +121,7 @@ let appData = {
   
   addExpensesBlock: function(){
     
-    let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    const cloneExpensesItem = expensesItems[0].cloneNode(true);
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, btnPlasExpAdd);
     expensesItems = document.querySelectorAll('.expenses-items');
  
@@ -131,8 +131,8 @@ let appData = {
   },
   getExpenses: function(){
     expensesItems.forEach((item) => {
-        let itemExpenses = item.querySelector('.expenses-title').value;
-        let cashExpenses = item.querySelector('.expenses-amount').value;
+        const itemExpenses = item.querySelector('.expenses-title').value;
+        const cashExpenses = item.querySelector('.expenses-amount').value;
         if(itemExpenses !== '' && cashExpenses !== ''){
           this.expenses[itemExpenses] = cashExpenses;
         }
@@ -140,7 +140,7 @@ let appData = {
   },
   addIncomeBlock: function(){
     
-    let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    const cloneIncomeItem = incomeItems[0].cloneNode(true);
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, btnPlasIncAdd);
     incomeItems = document.querySelectorAll('.income-items');
 
@@ -150,8 +150,8 @@ let appData = {
   },
   getIncome: function(){
    incomeItems.forEach((item) => {
-     let itemIncome = item.querySelector('.income-title').value;
-     let cashIncome = item.querySelector('.income-amount').value;
+     const itemIncome = item.querySelector('.income-title').value;
+     const cashIncome = item.querySelector('.income-amount').value;
    
      if (itemIncome !== '' && cashIncome !== ''){
       this.income[itemIncome] = cashIncome;
@@ -162,7 +162,7 @@ let appData = {
     } 
   },
   getAddExpenses: function(){
-    let addExpenses = addExpItem.value.split(',');
+    const addExpenses = addExpItem.value.split(',');
     addExpenses.forEach((item) => {
       item = item.trim();
       if (item !== ''){
@@ -172,7 +172,7 @@ let appData = {
   },
   getAddIncome: function(){
     addIncItem.forEach((item) => {
-       let itemValue = item.value.trim();
+       const itemValue = item.value.trim();
        if(itemValue !== ''){
          this.addIncome.push(itemValue);
        }    
@@ -227,7 +227,7 @@ checkBox.addEventListener('change', function(){
     depositAmount.style.display = 'inline-block';
     appData.deposit = 'true';
     depositBank.addEventListener('change', function(){
-      let selectIndex = this.options[this.selectedIndex].value;
+      const selectIndex = this.options[this.selectedIndex].value;
       if(selectIndex === 'other'){
         depositPercent.style.display = 'inline-block';
         depositPercent.value = '';
@@ -255,7 +255,7 @@ periodSelect.addEventListener('change', function(){
     periodAmount.innerHTML = periodSelect.value;
   });
 
-let addExp = [];
+const addExp = [];
 for (let i = 0; i < appData.addExpenses.length; i++) {
   let element = appData.addExpenses[i].trim();
   element = element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
