@@ -39,18 +39,18 @@ const appData = {
   percentDeposit: 0,
   moneyDeposit: 0,
   addExpenses: [],
-  check: function(){
+  check: () => {
     if (salaryAmount.value !== ''){
       start.removeAttribute('disabled', 'disabled');
     }
   },
-  start: function () {
+  start: function(){
     if (salaryAmount.value === ''){
       start.setAttribute('disabled', 'disabled');
       return;
     }
-    let allInput = document.querySelectorAll('.data input[type = text]');
-      allInput.forEach(function (item){
+    const allInput = document.querySelectorAll('.data input[type = text]');
+      allInput.forEach((item) => {
         item.setAttribute('disabled', 'disabled');
     });
     btnPlasExpAdd.setAttribute('disabled', 'disabled');
@@ -73,19 +73,19 @@ const appData = {
   },
   reset: function(){
    
-    let inputTextData = document.querySelectorAll('.data input[type = text]'),
+    const inputTextData = document.querySelectorAll('.data input[type = text]'),
         resultInputAll = document.querySelectorAll('.result input[type = text]');
     if(inputTextData.value === 'text' && resultInputAll === 'text'){
       cansel.addEventListener('click', this.reset);
     }
-    inputTextData.forEach(function(elem){
+    inputTextData.forEach((elem) => {
      elem.value = '';
      elem.removeAttribute('disabled', 'disabled');
      periodSelect.value = '0';
      periodAmount.innerHTML = periodSelect.value; 
 
     });
-    resultInputAll.forEach(function(elem){
+    resultInputAll.forEach((elem) => {
       elem.value = '';
      });
 
@@ -103,6 +103,8 @@ const appData = {
     btnPlasExpAdd.removeAttribute('disabled', 'disabled');
     btnPlasIncAdd.removeAttribute('disabled', 'disabled');
     checkBox.checked = false;
+    depositBank.style.display = 'none';
+    depositAmount.style.display = 'none';
   },
 
   showResult: function(){
@@ -113,13 +115,13 @@ const appData = {
     addIncomeValue.value = this.addIncome.join(', ');
     targetMonthValue.value = Math.ceil(this.getTargetMonth());
     incPeriodValue.value = this.calcPeriod();
-    periodSelect.addEventListener('change', function(){
+    periodSelect.addEventListener('change', () => {
       incPeriodValue.value = this.calcPeriod();
     });
   
   },
   
-  addExpensesBlock: function(){
+  addExpensesBlock:() => {
     
     const cloneExpensesItem = expensesItems[0].cloneNode(true);
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, btnPlasExpAdd);
@@ -129,7 +131,7 @@ const appData = {
       btnPlasExpAdd.style.display = 'none';
     }
   },
-  getExpenses: function(){
+  getExpenses: () => {
     expensesItems.forEach((item) => {
         const itemExpenses = item.querySelector('.expenses-title').value;
         const cashExpenses = item.querySelector('.expenses-amount').value;
@@ -138,7 +140,7 @@ const appData = {
         }
     });    
   },
-  addIncomeBlock: function(){
+  addIncomeBlock:() => {
     
     const cloneIncomeItem = incomeItems[0].cloneNode(true);
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, btnPlasIncAdd);
@@ -148,7 +150,7 @@ const appData = {
       btnPlasIncAdd.style.display = 'none';
     }
   },
-  getIncome: function(){
+  getIncome: () => {
    incomeItems.forEach((item) => {
      const itemIncome = item.querySelector('.income-title').value;
      const cashIncome = item.querySelector('.income-amount').value;
@@ -161,7 +163,7 @@ const appData = {
       this.incomeMonth += +this.income[key];
     } 
   },
-  getAddExpenses: function(){
+  getAddExpenses: () => {
     const addExpenses = addExpItem.value.split(',');
     addExpenses.forEach((item) => {
       item = item.trim();
@@ -261,16 +263,3 @@ for (let i = 0; i < appData.addExpenses.length; i++) {
   element = element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
   addExp.push(element);
 }
-console.log(addExp.join(', '));
-
-
-
-// inputTextData.forEach(function (item){
-//   start.addEventListener('click', function (){
-
-//     item.setAttribute('disabled', 'disabled');
-//     start.style.display = 'none';
-//     cansel.style.display = 'block';
-//   });
-// });
-
