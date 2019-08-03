@@ -70,7 +70,6 @@ class appData {
     this.getAddIncome();
     this.getInfoDeposit();
     this.getBudget();
-    this.eventsListeners();
     this.showResult();
     
   }
@@ -228,9 +227,10 @@ class appData {
       if(checkBox.checked){
         depositBank.style.display = 'inline-block';
         depositAmount.style.display = 'inline-block';
-        appData.deposit = 'true';
-        depositBank.addEventListener('change', () => {
-          const selectIndex = this.options[this.selectedIndex].value;
+        this.deposit = 'true';
+        depositBank.addEventListener('change', (event) => {
+          let target = event.target;
+          const selectIndex = target.options[target.selectedIndex].value;
           if(selectIndex === 'other'){
             depositPercent.style.display = 'inline-block';
             depositPercent.value = '';
@@ -244,23 +244,25 @@ class appData {
         depositBank.style.display = 'none';
         depositAmount.style.display = 'none';
         depositAmount.value = '';
-        appData.deposit = 'false';
+        this.deposit = 'false';
       }
     });
     
-    start.addEventListener('click', appData.start.bind(appData));
-    btnPlasExpAdd.addEventListener('click', appData.addExpensesBlock);
-    btnPlasIncAdd.addEventListener('click', appData.addIncomeBlock);
-    salaryAmount.addEventListener('keyup', appData.check);
-    cansel.addEventListener('click', appData.reset.bind(appData));
+    start.addEventListener('click', () => {
+      this.start();
+    });
+    btnPlasExpAdd.addEventListener('click', this.addExpensesBlock);
+    btnPlasIncAdd.addEventListener('click', this.addIncomeBlock);
+    salaryAmount.addEventListener('keyup', this.check);
+    cansel.addEventListener('click', this.reset);
     
     periodSelect.addEventListener('change', () => {
         periodAmount.innerHTML = periodSelect.value;
       });
     
     const addExp = [];
-    for (let i = 0; i < appData.addExpenses.length; i++) {
-      let element = appData.addExpenses[i].trim();
+    for (let i = 0; i < this.addExpenses.length; i++) {
+      let element = this.addExpenses[i].trim();
       element = element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
       addExp.push(element);
     }
@@ -269,12 +271,4 @@ class appData {
 }
 
 let myProgramm = new appData();
-myProgramm.getExpenses();
-myProgramm.getIncome();
-myProgramm.getExpensesMonth();
-myProgramm.getAddExpenses();
-myProgramm.getAddIncome();
-myProgramm.getInfoDeposit();
-myProgramm.getBudget();
 myProgramm.eventsListeners();
-myProgramm.showResult();
