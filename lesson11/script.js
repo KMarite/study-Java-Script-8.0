@@ -60,7 +60,6 @@ class appData {
     start.style.display = 'none';
     cansel.style.display = 'block';
 
-
     this.budget = +salaryAmount.value;
 
     this.getItem(expensesItems, 'expenses', this.expenses);
@@ -71,10 +70,9 @@ class appData {
     this.getInfoDeposit();
     this.getBudget();
     this.showResult();
-
   }
+  
   reset() {
-
     const inputTextData = document.querySelectorAll('.data input[type = text]'),
       resultInputAll = document.querySelectorAll('.result input[type = text]');
     if (inputTextData.value === 'text' && resultInputAll === 'text') {
@@ -100,7 +98,6 @@ class appData {
       expensesItems[i].parentNode.removeChild(expensesItems[i]);
       btnPlasExpAdd.style.display = 'block';
     }
-
     cansel.style.display = 'none';
     start.style.display = 'block';
     btnPlasExpAdd.removeAttribute('disabled', 'disabled');
