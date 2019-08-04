@@ -122,17 +122,28 @@ class appData {
     });
   
   }
+
+
   
-  addExpensesBlock(){
-    
-    const cloneExpensesItem = expensesItems[0].cloneNode(true);
-    expensesItems[0].parentNode.insertBefore(cloneExpensesItem, btnPlasExpAdd);
-    expensesItems = document.querySelectorAll('.expenses-items');
- 
-    if(expensesItems.length === 3){
-      btnPlasExpAdd.style.display = 'none';
-    }
+
+  blocks(){
+    const addBlocks = (myVar) => {
+
+      const cloneItems =  document.querySelector(`.${myVar}-items`);
+      const cloneItem = myVar.cloneNode(true);
+      myVar[0].parentNode.insertBefore(cloneItem, btnPlasExpAdd);
+      myVar[0].parentNode.insertBefore(cloneItem, btnPlasIncAdd);
+     
+   
+      if(cloneItems.length === 3){
+        btnPlasExpAdd.style.display = 'none';  
+      }
+    };
+    addBlocks('income');
+    addBlocks('expenses');
   }
+ 
+
   getExpenses(){
     expensesItems.forEach((item) => {
         const itemExpenses = item.querySelector('.expenses-title').value;
@@ -142,16 +153,16 @@ class appData {
         }
     });    
   }
-  addIncomeBlock(){
+  // addIncomeBlock(){
     
-    const cloneIncomeItem = incomeItems[0].cloneNode(true);
-    incomeItems[0].parentNode.insertBefore(cloneIncomeItem, btnPlasIncAdd);
-    incomeItems = document.querySelectorAll('.income-items');
+  //   const cloneIncomeItem = incomeItems[0].cloneNode(true);
+  //   incomeItems[0].parentNode.insertBefore(cloneIncomeItem, btnPlasIncAdd);
+  //   incomeItems = document.querySelectorAll('.income-items');
 
-    if(incomeItems.length === 3){
-      btnPlasIncAdd.style.display = 'none';
-    }
-  }
+  //   if(incomeItems.length === 3){
+  //     btnPlasIncAdd.style.display = 'none';
+  //   }
+  // }
   getIncome(){
    incomeItems.forEach((item) => {
      const itemIncome = item.querySelector('.income-title').value;
