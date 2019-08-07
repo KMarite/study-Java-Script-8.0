@@ -36,15 +36,14 @@ function getWeekDay(date) {
 
 //   Текущее время:12:05:15 PM
 
-function clock(){   
-    let elemtime = document.createElement('div'), 
-        timeNow = new Date().toLocaleTimeString('en');
+let elemtime = document.createElement('div'); 
+setInterval(function clock(){   
+       let timeNow = new Date().toLocaleTimeString('en');
         elemtime.innerHTML = 'Текущее время: ' + timeNow;    
         document.body.appendChild(elemtime); 
-        let idInterval = setInterval(clock(), 1000);
-        clearInterval(idInterval);
-}
-clock();
+
+});
+
 
 //   До нового года осталось 175 дней
 
