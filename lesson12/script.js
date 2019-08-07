@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 timerMinutes.textContent = '00';   
                 timerSeconds.textContent = '00';           
             }
-
+            
         }
         updateClock();
     }
