@@ -52,6 +52,7 @@ window.addEventListener('DOMContentLoaded', function () {
             return {timeRemaining, hours, minutes, seconds};
         }
         function updateClock() {
+            let timerNumbers = document.querySelector('.timer-numbers'); 
             let idInterval = setInterval(updateClock, 1000); 
             let timer = getTimeRemaining();
             if(timer.timeRemaining > 0){
@@ -61,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function () {
                }
                else if (timer.timeRemaining == 0){
                    clearInterval(idInterval);
-               }  
+               }    
             if(timerHours.textContent < 10)  {
                 timerHours.textContent = '0' + timer.hours;
             } else {
@@ -74,11 +75,20 @@ window.addEventListener('DOMContentLoaded', function () {
             }
             if(timerSeconds.textContent < 10){
                 timerSeconds.textContent = '0' + timer.seconds;
+            } else {
+                return timerMinutes.textContent;
+            }
+            if(timer.timeRemaining <= 0){
+                timerNumbers.style.color = 'red';
+                timerHours.textContent = '00';
+                timerMinutes.textContent = '00';   
+                timerSeconds.textContent = '00';
+            
             }
 
         }
         updateClock();
     }
-    countTimer('07 august 2019');
+    countTimer('08 august 2019');
     
 });
