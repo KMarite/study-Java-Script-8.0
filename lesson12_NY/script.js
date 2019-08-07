@@ -29,11 +29,13 @@ daysLeftNewYear();
 
 
 function clock(){
-    let elemTime = document.createElement('div');
-    let timeNow = new Date().toLocaleTimeString('en');
-    let idInterval = setInterval(timeNow, 1000);
+    let timeNow = document.createElement('div');
+    timeNow = new Date().toLocaleTimeString('en');
     document.write('Текущее время: ' + timeNow);
 
+
+    setInterval(clock, 1000);
+    
 
 }
 

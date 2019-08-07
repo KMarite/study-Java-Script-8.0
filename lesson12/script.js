@@ -65,25 +65,18 @@ window.addEventListener('DOMContentLoaded', function () {
                }    
             if(timerHours.textContent < 10)  {
                 timerHours.textContent = '0' + timer.hours;
-            } else {
-                return timerHours.textContent;
-            }
+            } 
             if(timerMinutes.textContent < 10){
                 timerMinutes.textContent = '0' + timer.minutes;
-            } else {
-                return timerMinutes.textContent;
-            }
+            } 
             if(timerSeconds.textContent < 10){
                 timerSeconds.textContent = '0' + timer.seconds;
-            } else {
-                return timerSeconds.textContent;
             }
             if(timer.timeRemaining <= 0){
                 timerNumbers.style.color = 'red';
                 timerHours.textContent = '00';
                 timerMinutes.textContent = '00';   
-                timerSeconds.textContent = '00';
-            
+                timerSeconds.textContent = '00';           
             }
 
         }
