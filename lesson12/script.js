@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function () {
             if(timerSeconds.textContent < 10){
                 timerSeconds.textContent = '0' + timer.seconds;
             } else {
-                return timerMinutes.textContent;
+                return timerSeconds.textContent;
             }
             if(timer.timeRemaining <= 0){
                 timerNumbers.style.color = 'red';
