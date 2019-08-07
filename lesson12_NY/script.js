@@ -41,9 +41,10 @@ function clock(){
         timeNow = new Date().toLocaleTimeString('en');
         elemtime.innerHTML = 'Текущее время: ' + timeNow;    
         document.body.appendChild(elemtime); 
-
+        let idInterval = setInterval(clock(), 1000);
+        clearInterval(idInterval);
 }
-
+clock();
 
 //   До нового года осталось 175 дней
 
