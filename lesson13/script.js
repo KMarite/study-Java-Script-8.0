@@ -114,20 +114,26 @@ window.addEventListener('DOMContentLoaded', () => {
             popupBtn = document.querySelectorAll('.popup-btn'),
             popupClose = document.querySelector('.popup-close'),
             popupContent = popup.querySelector('.popup-content');
+           
             let count = 0;
         
         popupBtn.forEach((elem) => {
             elem.addEventListener('click', () => {
                 popup.style.display = 'block';
-                popupContent.style.left = 0;             
+                          
             });
         });
 
     const animate = () => {
         count++;
+        popupContent.style.left = 0; 
         popupContent.style.left = count*2 + 'px';
+     let mob = window.matchMedia('max-width: 480px');
         if(count < 320){
             setTimeout(animate, 10);
+        }
+        if(mob < 992){
+           clearTimeout(animate);
         }
     };
     animate();
