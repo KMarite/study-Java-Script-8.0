@@ -112,44 +112,84 @@ window.addEventListener('DOMContentLoaded', () => {
     const togglePopup = () => {
         const popup = document.querySelector('.popup'),
             popupBtn = document.querySelectorAll('.popup-btn'),
-            popupClose = document.querySelector('.popup-close'),
             popupContent = popup.querySelector('.popup-content');
         let count = 0;
- 
+
         const animate = () => {
             count++;
-            popupContent.style.left = 0; 
-            popupContent.style.left = count*2 + 'px';
-          const mob = window.matchMedia('max-width: 480px');
-            if(count < 320){
+            popupContent.style.left = 0;
+            popupContent.style.left = count * 2 + 'px';
+            const mob = window.matchMedia('max-width: 480px');
+            if (count < 320) {
                 setTimeout(animate, 10);
             } else {
                 count = 0;
             }
-            if(mob < 992){
-               clearTimeout(animate);
-            } 
+            if (mob < 992) {
+                clearTimeout(animate);
+            }
         };
 
         popupBtn.forEach((elem) => {
             elem.addEventListener('click', () => {
-                popup.style.display = 'block';  
+                popup.style.display = 'block';
                 animate();
             });
         });
 
-        popupClose.addEventListener('click', () => {
-            popup.style.display = 'none';
-            popupContent.removeAttribute('style');    
+        popup.addEventListener('click', (event) => {
+            let target = event.target;
+            if(target.classList.contains('popup-close')){
+                popup.style.display = 'none';
+                popupContent.removeAttribute('style');
+            } else {
+                target = target.closest('.popup-content');
+                if(!target){
+                    popup.style.display = 'none';
+            }
+            }
+            
         });
+      
+
     };
     togglePopup();
 
- 
+    //  табы
+
+    const tabs = () => {
+        const tabHeader = document.querySelector('.service-header'),
+            tab = tabHeader.querySelectorAll('.service-header-tab'),
+            tabContent = document.querySelectorAll('.service-tab');
+
+        const toggleTabContent = (index) => {
+            for (let i = 0; i < tabContent.length; i++) {
+                if (index === i) {
+                    tab[i].classList.add('active');
+                    tabContent[i].classList.remove('d-none');
+                } else {
+                    tab[i].classList.remove('active');
+                    tabContent[i].classList.add('d-none');
+                }
+            }
+        };
+
+        tabHeader.addEventListener('click', (event) => {
+            let target = event.target;
+                target = target.closest('.service-header-tab');
+            if (target) {
+                tab.forEach((item, i) => {
+                    if (item === target) {
+                        toggleTabContent(i);
+                    }
+                });
+            }
+        });
+    };
+
+    tabs();
 
 
-
-    
 
 
 
