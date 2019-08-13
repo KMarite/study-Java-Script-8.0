@@ -89,23 +89,50 @@ window.addEventListener('DOMContentLoaded', () => {
     countTimer('15 august 2019');
 
     // меню
-
     const toggleMenu = () => {
+     
+    const  menu = document.querySelector('menu');
+           
+          document.body.addEventListener('click', () => {
+        let target = event.target;
+          console.log(target);
+          if(target.classList.contains('menu')){ 
+            menu.classList.add('active-menu'); 
+            
+          } else if(target.classList.contains('close-btn'))
+          {                 
+            menu.classList.remove('active-menu'); 
+            menu.style.display = 'none';
 
-        const btnMenu = document.querySelector('.menu'),
-            menu = document.querySelector('menu'),
-            closeBtn = document.querySelector('.close-btn'),
-            menuItems = menu.querySelectorAll('ul>li');
+          } else if(target.classList.contains('close-btn ul li')){
+            menu.classList.remove('active-menu'); 
+            menu.style.display = 'none';
+          }
 
-        const handlerMenu = () => {
-            menu.classList.toggle('active-menu');
-        };
-        btnMenu.addEventListener('click', handlerMenu);
-        closeBtn.addEventListener('click', handlerMenu);
-        menuItems.forEach((elem) => elem.addEventListener('click', handlerMenu));
+      });
+
     };
-
     toggleMenu();
+
+
+
+    // const toggleMenu = () => {
+
+    //     const btnMenu = document.querySelector('.menu'),
+    //         menu = document.querySelector('menu'),
+    //         closeBtn = document.querySelector('.close-btn'),
+    //         menuItems = menu.querySelectorAll('.close-btn ul li');
+
+    //     const handlerMenu = () => {
+    //         menu.classList.toggle('active-menu');
+    //     };
+        
+    //     btnMenu.addEventListener('click', handlerMenu);
+    //     closeBtn.addEventListener('click', handlerMenu);
+    //     menuItems.forEach((elem) => elem.addEventListener('click', handlerMenu));
+    // };
+
+    // toggleMenu();
 
     // popup
 
@@ -147,11 +174,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 if(!target){
                     popup.style.display = 'none';
             }
-            }
-            
+            }         
         });
-      
-
     };
     togglePopup();
 
