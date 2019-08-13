@@ -89,28 +89,24 @@ window.addEventListener('DOMContentLoaded', () => {
     countTimer('15 august 2019');
 
     // меню
+
+    // меню сдлано с помощью делегирования
+    
     const toggleMenu = () => {
      
-    const  menu = document.querySelector('menu');
-           
+    const  menu = document.querySelector('menu');           
           document.body.addEventListener('click', () => {
         let target = event.target;
           console.log(target);
-          if(target.classList.contains('menu')){ 
-            menu.classList.add('active-menu'); 
-            
+          if(target.closest('.menu')){ 
+            menu.classList.add('active-menu');             
           } else if(target.classList.contains('close-btn'))
           {                 
+            menu.classList.remove('active-menu');         
+          } else if(target.closest('ul > li')){
             menu.classList.remove('active-menu'); 
-            menu.style.display = 'none';
-
-          } else if(target.classList.contains('close-btn ul li')){
-            menu.classList.remove('active-menu'); 
-            menu.style.display = 'none';
           }
-
       });
-
     };
     toggleMenu();
 
