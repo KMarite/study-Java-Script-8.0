@@ -104,8 +104,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 menu.classList.remove('active-menu');
             } else if (target.closest('ul > li')) {
                 menu.classList.remove('active-menu');
-            } else {
+            } else if(target.tagName !== 'MENU'){
                 menu.classList.remove('active-menu');
+            } else{
+                return;
             }
         });
     };
