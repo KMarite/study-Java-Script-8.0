@@ -136,29 +136,36 @@ window.addEventListener('DOMContentLoaded', () => {
     const togglePopup = () => {
         const popup = document.querySelector('.popup'),
             popupBtn = document.querySelectorAll('.popup-btn'),
-            popupContent = popup.querySelector('.popup-content');
-        let count = 0;
+            popupContent = popup.querySelector('.popup-content'),
+            popupClose = document.querySelector('.popup-close');
+        let count = 0,
+            togglePopupInterval;
+
+// анимация модального окна popup
 
         const animate = () => {
+            togglePopupInterval = requestAnimationFrame(animate);
             count++;
-            popupContent.style.left = 0;
-            popupContent.style.left = count * 2 + 'px';
             const mob = window.matchMedia('max-width: 480px');
-            if (count < 320) {
-                setTimeout(animate, 10);
+            if (count <= 38) {
+                popupContent.style.left = count + '%';
             } else {
-                count = 0;
-            }
-            if (mob < 992) {
-                clearTimeout(animate);
-            }
+              cancelAnimationFrame(togglePopupInterval);
+              count = 0;
+        }
         };
-
         popupBtn.forEach((elem) => {
             elem.addEventListener('click', () => {
                 popup.style.display = 'block';
-                animate();
+                togglePopupInterval = requestAnimationFrame(animate);
             });
+        });
+
+        popupClose.addEventListener('click', () => {
+            cancelAnimationFrame(togglePopupInterval);
+            count = 0;
+            popup.style.display = 'none';
+            popupContent.removeAttribute('style');
         });
 
         popup.addEventListener('click', (event) => {
