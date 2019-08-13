@@ -91,22 +91,23 @@ window.addEventListener('DOMContentLoaded', () => {
     // меню
 
     // меню сдлано с помощью делегирования
-    
+
     const toggleMenu = () => {
-     
-    const  menu = document.querySelector('menu');           
-          document.body.addEventListener('click', () => {
-        let target = event.target;
-          console.log(target);
-          if(target.closest('.menu')){ 
-            menu.classList.add('active-menu');             
-          } else if(target.classList.contains('close-btn'))
-          {                 
-            menu.classList.remove('active-menu');         
-          } else if(target.closest('ul > li')){
-            menu.classList.remove('active-menu'); 
-          }
-      });
+
+        const menu = document.querySelector('menu');
+        document.body.addEventListener('click', () => {
+            let target = event.target;
+            console.log(target);
+            if (target.closest('.menu')) {
+                menu.classList.add('active-menu');
+            } else if (target.classList.contains('close-btn')) {
+                menu.classList.remove('active-menu');
+            } else if (target.closest('ul > li')) {
+                menu.classList.remove('active-menu');
+            } else {
+                menu.classList.remove('active-menu');
+            }
+        });
     };
     toggleMenu();
 
@@ -122,7 +123,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //     const handlerMenu = () => {
     //         menu.classList.toggle('active-menu');
     //     };
-        
+
     //     btnMenu.addEventListener('click', handlerMenu);
     //     closeBtn.addEventListener('click', handlerMenu);
     //     menuItems.forEach((elem) => elem.addEventListener('click', handlerMenu));
@@ -162,15 +163,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
         popup.addEventListener('click', (event) => {
             let target = event.target;
-            if(target.classList.contains('popup-close')){
+            if (target.classList.contains('popup-close')) {
                 popup.style.display = 'none';
                 popupContent.removeAttribute('style');
             } else {
                 target = target.closest('.popup-content');
-                if(!target){
+                if (!target) {
                     popup.style.display = 'none';
+                }
             }
-            }         
         });
     };
     togglePopup();
@@ -196,7 +197,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         tabHeader.addEventListener('click', (event) => {
             let target = event.target;
-                target = target.closest('.service-header-tab');
+            target = target.closest('.service-header-tab');
             if (target) {
                 tab.forEach((item, i) => {
                     if (item === target) {
