@@ -59,11 +59,11 @@ window.addEventListener('DOMContentLoaded', () => {
         const updateClock = () => {
             const timerNumbers = document.querySelector('.timer-numbers');
             const timer = getTimeRemaining();
-      
-                timerHours.textContent = timer.hours;
-                timerMinutes.textContent = timer.minutes;
-                timerSeconds.textContent = timer.seconds;
-                
+         
+                    timerHours.textContent = timer.hours;
+                    timerMinutes.textContent = timer.minutes;
+                    timerSeconds.textContent = timer.seconds;
+
             if (timerHours.textContent < 10) {
                 timerHours.textContent = '0' + timer.hours;
             }
@@ -74,8 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 timerSeconds.textContent = '0' + timer.seconds;
             }
             if (timer.timeRemaining <= 0) {
-                clearInterval(idInterval);
-            } else if (timer.timeRemaining < 0) {
+                clearInterval(idInterval);           
                 timerNumbers.style.color = 'red';
                 timerHours.textContent = '00';
                 timerMinutes.textContent = '00';
@@ -83,9 +82,10 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         };
         let idInterval = setInterval(updateClock, 1000);
+        
         updateClock();
     };
-    countTimer('18 august 2019');
+    countTimer('1 august 2019');
 
     // меню
 
@@ -220,13 +220,29 @@ window.addEventListener('DOMContentLoaded', () => {
     // слайдер 
 
     const slider = () => {
-        const slide = document.querySelectorAll('.portfolio-item'),
-            btn = document.querySelectorAll('.portfolio-btn'),
-            dot = document.querySelectorAll('.dot'),
+        const slide = document.querySelectorAll('.portfolio-item'),       
             slider = document.querySelector('.portfolio-content');
 
         let currentSlide = 0,
             interval;
+     
+  
+        for(let i = 0; i < slide.length; i++){  
+            const dots = document.querySelector('.portfolio-dots'),
+             newDot = document.createElement('li'); 
+            if(i == 0) {
+                newDot.setAttribute('class', 'dot dot-active');
+                dots.appendChild(newDot);
+            } else {
+                newDot.setAttribute('class', 'dot');
+                dots.appendChild(newDot); 
+            }    
+            
+        }
+     const  dot = document.querySelectorAll('.dot');
+
+
+   
 
         const prevSlide = (elem, index, strClass) => {
             elem[index].classList.remove(strClass);
@@ -301,7 +317,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 startSlide();
             }
         });
-
 
         startSlide(1000);
 
