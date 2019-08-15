@@ -263,7 +263,7 @@ window.addEventListener('DOMContentLoaded', () => {
             nextSlide(dot, currentSlide, 'dot-active');
         };
 
-        const startSlide = (time) => {
+        const startSlide = (time = 1000) => {
             interval = setInterval(autoPlaySlide, time);
         };
 
