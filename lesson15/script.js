@@ -59,10 +59,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const updateClock = () => {
             const timerNumbers = document.querySelector('.timer-numbers');
             const timer = getTimeRemaining();
-         
-                    timerHours.textContent = timer.hours;
-                    timerMinutes.textContent = timer.minutes;
-                    timerSeconds.textContent = timer.seconds;
+
+            timerHours.textContent = timer.hours;
+            timerMinutes.textContent = timer.minutes;
+            timerSeconds.textContent = timer.seconds;
 
             if (timerHours.textContent < 10) {
                 timerHours.textContent = '0' + timer.hours;
@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 timerSeconds.textContent = '0' + timer.seconds;
             }
             if (timer.timeRemaining <= 0) {
-                clearInterval(idInterval);           
+                clearInterval(idInterval);
                 timerNumbers.style.color = 'red';
                 timerHours.textContent = '00';
                 timerMinutes.textContent = '00';
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         };
         let idInterval = setInterval(updateClock, 1000);
-        
+
         updateClock();
     };
     countTimer('1 august 2019');
@@ -220,29 +220,29 @@ window.addEventListener('DOMContentLoaded', () => {
     // слайдер 
 
     const slider = () => {
-        const slide = document.querySelectorAll('.portfolio-item'),       
+        const slide = document.querySelectorAll('.portfolio-item'),
             slider = document.querySelector('.portfolio-content');
 
         let currentSlide = 0,
             interval;
-     
-  
-        for(let i = 0; i < slide.length; i++){  
+
+
+        for (let i = 0; i < slide.length; i++) {
             const dots = document.querySelector('.portfolio-dots'),
-             newDot = document.createElement('li'); 
-            if(i == 0) {
+                newDot = document.createElement('li');
+            if (i == 0) {
                 newDot.setAttribute('class', 'dot dot-active');
                 dots.appendChild(newDot);
             } else {
                 newDot.setAttribute('class', 'dot');
-                dots.appendChild(newDot); 
-            }    
-            
+                dots.appendChild(newDot);
+            }
+
         }
-     const  dot = document.querySelectorAll('.dot');
+        const dot = document.querySelectorAll('.dot');
 
 
-   
+
 
         const prevSlide = (elem, index, strClass) => {
             elem[index].classList.remove(strClass);
@@ -323,9 +323,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     slider();
 
+    // блок "Наша команда"
 
+    const img = document.querySelectorAll('.command__photo');
+    let changeImg;
 
-
+    img.forEach((elem) => {
+        elem.addEventListener('mouseenter', (event) => {
+            changeImg = event.target.getAttribute('src');
+            event.target.src = event.target.dataset.img;
+        });
+        elem.addEventListener('mouseleave', (event) => {
+            event.target.src = changeImg;
+        });
+    });
 
 
 
