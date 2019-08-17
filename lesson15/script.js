@@ -338,8 +338,21 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // калькулятор
+
+    const inputs = document.querySelectorAll('input.calc-item');
+    inputs.forEach((elem) => {
+        elem.addEventListener('keyup', (event) => {
+        let target = event.target;
+        target.value = target.value.replaсe(/\D/g, '');
+        console.log(target.value);
+        });
+    });
 
 
+
+
+    
 
 
 
