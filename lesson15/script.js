@@ -344,7 +344,7 @@ window.addEventListener('DOMContentLoaded', () => {
     inputs.forEach((elem) => {
         elem.addEventListener('keyup', (event) => {
         let target = event.target;
-        target.value = target.value.replaсe(/\D/g, '');
+        target.value = target.value.replace(/\D/g, '');
         console.log(target.value);
         });
     });
