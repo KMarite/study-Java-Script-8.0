@@ -401,42 +401,59 @@ window.addEventListener('DOMContentLoaded', () => {
             loadMessage = 'Загрузка...',
             successMessage = 'Спасибо! Мы скоро с Вами свяжемся';
 
-        const form = document.getElementById('form1');
         const statusMessage = document.createElement('div');
         statusMessage.style.cssText = 'font-size: 2rem;';
+        const forms = document.querySelectorAll('form');
+        
+        forms.forEach((elem) => {
 
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            form.appendChild(statusMessage);
-            statusMessage.textContent = loadMessage;
-            const formData = new FormData(form);
-            let body = {};
-
-            // for (let val of formData.entries()){
-            //     body[val[0]] = val[1];
-            // }
-
-            formData.forEach((val, key) => {
-                body[key] = val;
-            });
-            postData(body,
-                () => {
-                    statusMessage.textContent = successMessage;
-                },
-                (error) => {
-                    statusMessage.textContent = errorMessage;
-                    console.error(error);
+            elem.addEventListener('submit', (event) => {
+                event.preventDefault();
+                elem.appendChild(statusMessage);
+                statusMessage.textContent = loadMessage;
+                const formData = new FormData(elem);
+                let body = {};
+                formData.forEach((val, key) => {
+                    body[key] = val;
                 });
+                postData(elem, body,
+                    () => {
+                        statusMessage.textContent = successMessage;
+                    },
+                    (error) => {
+                        statusMessage.textContent = errorMessage;
+                        console.error(error);
+                    });
+               
         });
 
-        const postData = (body, outputData, errorData) => {
+        // валидация 
+        elem.addEventListener('input', (elem) => {
+            if (elem.target.name === 'user_name'){
+                elem.srcElement.value = elem.srcElement.value.replace(/[^а-яёА-ЯЁ\s]/gi, ``);
+            } else if (elem.target.name === 'user_phone'){
+                elem.srcElement.value = elem.srcElement.value.replace(/[^+0-9]/gi, ``);
+            }  else if (elem.target.name === 'user_message'){
+                elem.srcElement.value = elem.srcElement.value.replace(/[^а-яёА-ЯЁ\s]/gi, ``);
+            } else {
+                return;
+            }
+        });
+
+        });
+
+        const postData = (elem, body, outputData, errorData) => {
             const request = new XMLHttpRequest();
+            const myInputs = elem.querySelectorAll('input');
             request.addEventListener('readystatechange', () => {
                 if (request.readyState !== 4) {
                     return;
                 }
                 if (request.status === 200) {
                     outputData();
+                    myInputs.forEach((input) => {
+                        input.value = '';
+                    });
                 } else {
                     errorData(request.status);
                 }
@@ -444,7 +461,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             request.open('POST', './server.php');
             request.setRequestHeader('Content-Type', 'application/json');
-
             request.send(JSON.stringify(body));
         };
 
