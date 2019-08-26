@@ -406,7 +406,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const forms = document.querySelectorAll('form');
         
         forms.forEach((elem) => {
-
+            const myInputs = elem.querySelectorAll('input');
             elem.addEventListener('submit', (event) => {
                 event.preventDefault();
                 elem.appendChild(statusMessage);
@@ -416,14 +416,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 formData.forEach((val, key) => {
                     body[key] = val;
                 });
-                postData(elem, body,
-                    () => {
-                        statusMessage.textContent = successMessage;
-                    },
-                    (error) => {
-                        statusMessage.textContent = errorMessage;
-                        console.error(error);
-                    });
+                postData(body)
+                    .then(statusMessage.textContent = successMessage)
+                    .then(myInputs.forEach((input) => input.value = ''))
+                    .catch(errorMessage => console.error(errorMessage));
                
         });
 
@@ -442,10 +438,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
         });
         
-        const postData = (elem, body) => {
+        const postData = (body) => {
             return new Promise((resolve, reject) => {
-                const request = new XMLHttpRequest();
-                const myInputs = elem.querySelectorAll('input');
+                const request = new XMLHttpRequest();         
                 request.addEventListener('readystatechange', () => {
                     if (request.readyState !== 4) {
                         return;
@@ -457,15 +452,13 @@ window.addEventListener('DOMContentLoaded', () => {
                         reject(request.status);
                     }
             });
-            postData(body)
-            .then(statusMessage.textContent = successMessage)
-            .then(myInputs.forEach((input) =>input.value = ''))
-            .catch(errorMessage => console.error(errorMessage));
-
+            request.open('POST', './server.php');
+            request.setRequestHeader('Content-Type', 'application/json');
+            request.send(JSON.stringify(body));
             });
 
         };
-
+        
     };
     sendForm();
 
