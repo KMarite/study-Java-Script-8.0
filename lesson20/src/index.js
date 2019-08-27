@@ -1,4 +1,11 @@
 'use strict';
+import "@babel/polyfill";
+import 'nodelist-foreach-polyfill';
+import elementClosest from 'element-closest';
+elementClosest(window);
+import 'formdata-polyfill';
+import 'es6-promise';
+import 'fetch-polyfill';
 
 import countTimer from './modules/countTimer.js';
 import toggleMenu from './modules/toggleMenu.js';
@@ -10,7 +17,7 @@ import calc from './modules/calc.js';
 import sendForm from './modules/sendForm.js';
  
 // Timer 
-countTimer();
+countTimer('29 august 2019');
 // меню
 toggleMenu();
 // popup
